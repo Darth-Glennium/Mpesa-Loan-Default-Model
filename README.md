@@ -1,65 +1,148 @@
-# M-Pesa Loan Default Predictor
+# M-Pesa Credit Risk Scoring System
+### Loan Default Prediction via Alternative Financial Data
+
+---
 
 ## Overview
-This project is a web application built with Streamlit that allows users to upload their M-Pesa statements (PDFs) and receive a loan default prediction based on their financial transactions. The app extracts relevant financial features from the statement, analyzes them, and predicts whether the individual is likely to repay or default on a loan.
 
-## Background
-In Kenya, mobile money lenders play a significant role in providing short-term loans to individuals who may not have access to traditional banking services. Many lenders use transaction history from M-Pesa to assess creditworthiness. This project aims to automate and improve that process using machine learning, helping lenders make informed lending decisions based on financial behavior.
+This project is a machine learning-based credit risk scoring system that predicts the probability of loan default using alternative financial data extracted from M-Pesa mobile money statements.
+
+The system demonstrates how unstructured financial transaction data (PDF statements) can be transformed into structured behavioral features for use in predictive credit modeling. It is designed to simulate real-world underwriting systems used in fintech lending environments.
+
+The solution is deployed as an interactive **Streamlit** application that allows users to upload M-Pesa statements and receive real-time credit risk predictions alongside interpretable financial insights.
+
+---
+
+## Problem Statement
+
+In many emerging markets, traditional credit scoring systems are limited due to a lack of formal banking history. As a result, mobile money transaction data has become a critical alternative source for assessing creditworthiness.
+
+However, raw transaction data is unstructured and not directly usable for machine learning models. This project addresses the challenge of:
+
+- Extracting meaningful financial signals from mobile money statements
+- Engineering behavioral credit features from transaction data
+- Building a predictive model for loan default risk estimation
+
+---
+
+## Key Objectives
+
+- Extract financial features from M-Pesa PDF statements
+- Engineer behavioral indicators of financial health
+- Train a supervised machine learning model for default prediction
+- Provide interpretable risk insights for lending decisions
+- Deploy the model as an interactive web application
+
+---
 
 ## Features
-- Extracts income, expenses, loan disbursements, and repayments from M-Pesa statements.
-- Provides an interactive web interface where users can upload statements and view results.
-- Uses a trained machine learning model to assess loan repayment risk.
-- Displays key financial indicators, including income-expense ratio, debt burden, and credit score indicators.
-- Generates financial reports and visualizations to help users understand their financial standing.
+
+###  PDF Data Extraction
+Parses M-Pesa statements using `pdfplumber`.
+
+###  Financial Feature Engineering
+- Income estimation
+- Expense tracking
+- Loan disbursement detection
+- Repayment behavior analysis
+- Cashflow stability indicators
+
+###  Credit Risk Indicators
+- Income-to-expense ratio
+- Debt burden estimation
+- Transaction consistency metrics
+
+###  Machine Learning Model
+- Supervised classification (Random Forest)
+- Loan default probability prediction
+
+###  Interpretability Layer
+- Financial summary dashboard
+- Risk indicator visualization
+
+###  Web Interface
+- Built using Streamlit for real-time inference
+
+---
+
+## Methodology
+
+### 1. Data Extraction
+M-Pesa PDF statements are parsed to extract raw transaction data including deposits, withdrawals, and transfers.
+
+### 2. Feature Engineering
+Transactions are transformed into structured financial behavior features such as:
+- Monthly income and expenditure patterns
+- Loan repayment frequency
+- Net cashflow stability
+- Transaction volatility
+
+### 3. Model Development
+A supervised learning approach is used to train a classification model that predicts loan default risk based on engineered features.
+
+| Parameter | Detail |
+|-----------|--------|
+| Algorithm | Random Forest Classifier |
+| Framework | Scikit-learn |
+| Output | Probability of default / non-default |
+
+### 4. Evaluation
+Model performance is evaluated using standard classification metrics such as accuracy and feature importance analysis.
+
+### 5. Deployment
+The trained model is deployed using Streamlit to allow interactive predictions from uploaded financial documents.
+
+---
 
 ## Technologies Used
-- Python
-- Streamlit (for the web interface)
-- pdfplumber (for extracting text from M-Pesa PDFs)
-- pandas & numpy (for data manipulation)
-- scikit-learn (for machine learning model)
-- matplotlib & seaborn (for visualizations)
+
+| Category | Tools |
+|----------|-------|
+| Language | Python |
+| Web App | Streamlit |
+| PDF Parsing | pdfplumber |
+| Data Processing | pandas, numpy |
+| Machine Learning | scikit-learn |
+| Visualization | matplotlib, seaborn |
+
+---
 
 ## Project Structure
+
 ```
-├── mpesa_loan_streamlit.py    # Main Streamlit app
-├── loan_model.pkl             # Trained Random Forest model
-├── requirements.txt           # Dependencies
-├── README.md                  # Project documentation
+├── mpesa_loan_streamlit.py   # Streamlit application
+├── loan_model.pkl            # Trained ML model
+├── requirements.txt          # Dependencies
+└── README.md                 # Project documentation
 ```
 
-## Installation & Running the App
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/mpesa-loan-default-predictor.git
-cd mpesa-loan-default-predictor
-```
-### 2. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-### 3. Run the Streamlit App
-```bash
-streamlit run mpesa_loan_streamlit.py
-```
-This will open the app in your web browser.
+---
 
-## How It Works
-1. Upload an M-Pesa Statement (PDF).
-2. The app extracts financial data such as income, expenses, active loans, and loan repayments.
-3. It predicts whether the individual is likely to default on a loan.
-4. Displays a financial report and visualizations based on extracted data.
+## Use Case: Fintech Credit Scoring
 
-## Use Case for Mobile Money Lenders in Kenya
-With the rise of mobile lending platforms in Kenya, financial institutions and fintech startups rely heavily on transaction data to assess borrowers. This project helps lenders automate credit risk assessment, reduce manual analysis, and improve decision-making based on real transaction behavior.
+This system demonstrates how alternative data sources such as mobile money transactions can be used to:
 
-## Contributing
-If you would like to contribute to this project, feel free to fork the repository, create a branch, and submit a pull request.
+- Improve credit access for underserved populations
+- Support risk-based lending decisions
+- Automate loan eligibility assessment
+- Reduce reliance on traditional credit bureau data
 
-## License
-This project is open-source and available under the MIT License.
+It is particularly relevant for fintech lenders operating in markets where formal credit histories are limited.
 
-We welcome feedback and suggestions for improvement.
+---
 
+## Future Improvements
 
+- [ ] Integration of XGBoost / LightGBM for improved performance
+- [ ] Model calibration for probability-of-default scoring
+- [ ] Explainability using SHAP values
+- [ ] Real-time API deployment for production lending systems
+- [ ] Integration with larger financial datasets for improved generalization
+
+---
+
+## Author
+
+**Glenn Kipanga**  
+Data Science & AI Enthusiast  
+GitHub: [@DARTH-GLENNIUM](https://github.com/DARTH-GLENNIUM)
